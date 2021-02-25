@@ -26,37 +26,20 @@ export default memo(({ data }) => {
       <div className='question'>
         <h3>{data.title}</h3>
         <ul className='answer_list'>
-          <li>
-            First answer{' '}
-            <Handle
-              type='source'
-              position='right'
-              id='a'
-              className='linked'
-              onClick={(event) => setCurrentElement(event.target)}
-            ></Handle>
-          </li>
-          <li>
-            Second answer{' '}
-            <Handle
-              type='source'
-              position='right'
-              id='b'
-              className='linked'
-              onClick={(event) => setCurrentElement(event.target)}
-            ></Handle>
-          </li>
-          <li>
-            Third answer{' '}
-            <Handle
-              type='source'
-              position='right'
-              id='c'
-              onClick={(event) => setCurrentElement(event.target)}
-            >
-              <Add />
-            </Handle>
-          </li>
+          {data.answers.map((answer, index) => (
+            <li key={index}>
+              {answer.title}
+              <Handle
+                type='source'
+                position='right'
+                id={index.toString()}
+                className={answer.linked ? 'linked' : ''}
+                onClick={(event) => setCurrentElement(event.target)}
+              >
+                {answer.linked ? '' : <Add />}
+              </Handle>
+            </li>
+          ))}
         </ul>
       </div>
       <Popover

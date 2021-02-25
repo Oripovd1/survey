@@ -4,14 +4,17 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.react-flow__node-questionNode {
+.react-flow__node-question {
   display: block;
   min-width: 300px;
+  max-width: 600px;
   padding: 32px !important;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 6px;
   cursor: pointer !important;
+}
+.react-flow__node {
   .react-flow__handle {
     display: flex;
     justify-content: center;
@@ -44,7 +47,7 @@ body {
   h3 {
     margin: 0;
     font-size: 24px;
-    line-height: 22px;
+    line-height: 28px;
     font-weight: normal;
   }
   .answer_list {
@@ -112,6 +115,62 @@ body {
         line-height: 22px;
         color: rgba($color: #000000, $alpha: 0.5);
       }
+    }
+  }
+}
+
+.react-flow__node-start {
+  display: block;
+  width: 64px;
+  height: 64px;
+  background: #00c853;
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer !important;
+  .start_node {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    svg {
+      font-size: 48px;
+      fill: #fff;
+    }
+  }
+  .react-flow__handle {
+    &.source.linked {
+      width: 26px;
+      height: 5px;
+    }
+  }
+}
+.react-flow__node-finish {
+  display: block;
+  width: 64px;
+  height: 64px;
+  background: #f5644a;
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer !important;
+  .finish_node {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    svg {
+      font-size: 48px;
+      fill: #fff;
+    }
+  }
+  .react-flow__handle {
+    &.target {
+      width: 26px;
+      height: 5px;
+      border-radius: 0;
     }
   }
 }
