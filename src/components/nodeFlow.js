@@ -15,8 +15,12 @@ const nodeTypes = {
   questionNode: CustomNode,
 }
 const NodeFlow = () => {
+  const [reactflowInstance, setReactflowInstance] = useState(null)
+  const [elements, setElements] = useState([])
   const [visible, setVisible] = useState(false)
   const [currentNode, setCurrentNode] = useState({})
+
+  console.log('elements => ', elements)
 
   const onElementClick = (event, element) => {
     setVisible(true)
@@ -24,8 +28,6 @@ const NodeFlow = () => {
     console.log('click', element)
   }
 
-  const [reactflowInstance, setReactflowInstance] = useState(null)
-  const [elements, setElements] = useState([])
   const [node, setNode] = useState({
     id: 123,
     title: 'Question title',
@@ -85,13 +87,13 @@ const NodeFlow = () => {
         sourceHandle: 'a',
         style: { stroke: '#000' },
       },
-      //   {
-      //     id: 'e2b-4',
-      //     source: '2',
-      //     target: '4',
-      //     sourceHandle: 'b',
-      //     style: { stroke: '#000' },
-      //   },
+      {
+        id: 'e2b-4',
+        source: '2',
+        target: '4',
+        sourceHandle: 'b',
+        style: { stroke: '#000' },
+      },
     ])
   }, [])
   useEffect(() => {
@@ -138,7 +140,11 @@ const NodeFlow = () => {
       >
         <Controls />
       </ReactFlow>
-      <QuestionForm handleClose={() => setVisible(false)} open={visible} data={currentNode?.data} />
+      <QuestionForm
+        handleClose={() => setVisible(false)}
+        open={visible}
+        data={currentNode?.data}
+      />
     </div>
   )
 }

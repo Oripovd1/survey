@@ -1,5 +1,5 @@
 import 'antd/dist/antd.css'
-import './App.css'
+import './App.scss'
 import NodeFlow from './components/nodeFlow'
 // import Node from './node'
 

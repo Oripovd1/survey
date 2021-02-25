@@ -2,7 +2,6 @@ import React from 'react'
 import { Drawer, Form, Row, Col, Input, Button } from 'antd'
 
 export default function QuestionForm({ handleClose, open, data }) {
-  console.log('data => ', data)
   return (
     <Drawer
       title='Question'
