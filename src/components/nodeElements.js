@@ -8,6 +8,8 @@ import {
   country,
   district,
   specialists,
+  permanentResidence,
+  typeOfResidence,
 } from './data'
 
 export const nodeElements = [
@@ -75,7 +77,7 @@ export const nodeElements = [
     id: '11',
     type: 'question',
     data: district,
-    position: { x: 2580, y: 1920 },
+    position: { x: 2600, y: 1840 },
   },
   {
     id: '12',
@@ -93,13 +95,31 @@ export const nodeElements = [
     id: '14',
     type: 'question',
     data: specialists,
-    position: { x: 3300, y: 2280 },
+    position: { x: 3160, y: 2640 },
   },
   {
     id: '15',
     type: 'finish',
     data: { label: 'Finish' },
-    position: { x: 3940, y: 2800 },
+    position: { x: 4180, y: 3080 },
+  },
+  {
+    id: '16',
+    type: 'question',
+    data: permanentResidence,
+    position: { x: 3780, y: 3180 },
+  },
+  {
+    id: '17',
+    type: 'question',
+    data: typeOfResidence,
+    position: { x: 4520, y: 3480 },
+  },
+  {
+    id: '18',
+    type: 'finish',
+    data: { label: 'Finish' },
+    position: { x: 4420, y: 3480 },
   },
   // edges
   {
@@ -213,9 +233,56 @@ export const nodeElements = [
     sourceHandle: '3',
   },
   {
-    id: 'e14f-15',
+    id: 'e14a-15',
     source: '14',
     target: '15',
+    sourceHandle: '0',
+  },
+  {
+    id: 'e14b-15',
+    source: '14',
+    target: '15',
+    sourceHandle: '1',
+  },
+  {
+    id: 'e14c-15',
+    source: '14',
+    target: '15',
+    sourceHandle: '2',
+  },
+  {
+    id: 'e14d-15',
+    source: '14',
+    target: '15',
+    sourceHandle: '3',
+  },
+  {
+    id: 'e14e-15',
+    source: '14',
+    target: '15',
+    sourceHandle: '4',
+  },
+  {
+    id: 'e14f-16',
+    source: '14',
+    target: '16',
     sourceHandle: '5',
+  },
+  {
+    id: 'e10-14',
+    source: '10',
+    target: '14',
+  },
+  {
+    id: 'e16a-17',
+    source: '16',
+    target: '17',
+    sourceHandle: '0',
+  },
+  {
+    id: 'e16b-18',
+    source: '16',
+    target: '18',
+    sourceHandle: '1',
   },
 ]

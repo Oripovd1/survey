@@ -163,28 +163,65 @@ export const specialists = {
   answers: [
     {
       title: 'Маркетинг / маркетинговые исследования / PR',
-      linked: false,
+      linked: true,
     },
     {
       title: 'Реклама',
-      linked: false,
+      linked: true,
     },
     {
       title: 'Радио, пресса, телевидение',
-      linked: false,
+      linked: true,
     },
     {
       title: 'Журналистика',
-      linked: false,
+      linked: true,
     },
     {
       title:
         'Телевизионные коммуникации / предоставление услуг кабельной, спутниковой связи',
-      linked: false,
+      linked: true,
     },
     {
       title: 'Не работает ни в одной из этих сфер деятельности',
       linked: true,
+    },
+  ],
+}
+export const permanentResidence = {
+  id: 10,
+  title:
+    'Вы и ваша семья постоянно проживаете в этом городе и вашему адресу не менее полугода?',
+  answers: [
+    {
+      title: 'Да',
+      linked: true,
+    },
+    {
+      title: 'Нет',
+      linked: true,
+    },
+  ],
+}
+export const typeOfResidence = {
+  id: 11,
+  title: 'Вы живете в отдельной квартире, коммунальной или собственном доме?',
+  answers: [
+    {
+      title: 'В отдельной квартире',
+      linked: false,
+    },
+    {
+      title: 'В коммунальной квартире',
+      linked: false,
+    },
+    {
+      title: 'В собственном доме',
+      linked: false,
+    },
+    {
+      title: 'В общежитии, в гостинице (Другое)',
+      linked: false,
     },
   ],
 }
