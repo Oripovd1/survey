@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react'
 import { Handle } from 'react-flow-renderer'
 import { Popover } from '@material-ui/core'
-import { ExpandMore, Add } from '@material-ui/icons'
+import { ChevronRight, ExpandMore } from '@material-ui/icons'
 
 export default memo(({ data }) => {
   const [currentElement, setCurrentElement] = useState(null)
@@ -10,42 +10,29 @@ export default memo(({ data }) => {
   return (
     <>
       <Handle
-        type='target'
-        position='top'
-        onConnect={(params) => console.log('handle onConnect', params)}
-      >
-        <ExpandMore />
-      </Handle>
-      <Handle
         type='source'
         position='bottom'
         onConnect={(params) => console.log('handle onConnect', params)}
       >
         <ExpandMore />
       </Handle>
-      {data.multiple && (
-        <Handle
-          type='source'
-          position='right'
-          id={data.id}
-          className='multiple'
-          onConnect={(params) => console.log('handle onConnect', params)}
-        />
-      )}
-      <div className='question'>
-        <h3>{data.title}</h3>
+      <div className='condition'>
+        <h3>
+          <img src='romb.svg' alt='Condition' /> Условия
+        </h3>
+        <p>{data.title}</p>
         <ul className='answer_list'>
           {data.answers.map((answer, index) => (
             <li key={index}>
               {answer.title}
               <Handle
                 type='source'
-                position='right'
+                position='left'
                 id={index.toString()}
                 className={answer.linked ? 'linked' : ''}
                 onClick={(event) => setCurrentElement(event.target)}
               >
-                {answer.linked ? '' : <Add />}
+                {answer.linked ? '' : <ChevronRight />}
               </Handle>
             </li>
           ))}

@@ -28,7 +28,7 @@ body {
       font-size: 18px;
       fill: #fff;
     }
-    &.react-flow__handle-right:not(.linked):hover {
+    &.react-flow__handle-right:not(.linked):not(.multiple):hover {
       transform: scale(1.2) translateY(-50%);
       transition: all 0.2s ease-in-out;
     }
@@ -39,6 +39,13 @@ body {
     &.source.linked {
       width: 5px;
       height: 24px;
+      border-radius: 0;
+    }
+    &.multiple.react-flow__handle-right {
+      width: 5px;
+      height: 24px;
+      top: auto;
+      bottom: 25%;
       border-radius: 0;
     }
   }
@@ -173,4 +180,54 @@ body {
       border-radius: 0;
     }
   }
+}
+
+.condition {
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: normal;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  p {
+    margin: 0;
+    font-size: 8px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .answer_list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 8px;
+    list-style-type: none;
+    li {
+      position: relative;
+      padding: 9px 12px;
+      margin-bottom: 12px;
+      border: 1px solid #b9b9b9;
+      border-radius: 4px;
+      background-color: #fff;
+      font-size: 12px;
+      line-height: 22px;
+      color: rgba(167, 167, 167, 0.7);
+    }
+  }
+  .react-flow__handle-left {
+    width: 24px;
+    height: 24px;
+    left: -25px;
+  }
+}
+.react-flow__node-condition {
+  display: block;
+  min-width: 160px;
+  max-width: 300px;
+  padding: 16px 12px !important;
+  background: #ffcc80;
+  border: 1px solid #ffbd5a;
+  border-radius: 6px;
+  cursor: pointer !important;
 }

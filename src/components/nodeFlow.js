@@ -7,7 +7,7 @@ import ReactFlow, {
 } from 'react-flow-renderer'
 import QuestionForm from './questionForm'
 import { nodeElements } from './nodeElements'
-import { QuestionNode, StartNode, FinishNode } from './nodeTypes'
+import { QuestionNode, StartNode, FinishNode, ConditionNode } from './nodeTypes'
 
 const onNodeDragStop = (event, node) => console.log('drag stop', node)
 
@@ -17,6 +17,7 @@ const nodeTypes = {
   question: QuestionNode,
   start: StartNode,
   finish: FinishNode,
+  condition: ConditionNode,
 }
 
 const NodeFlow = () => {

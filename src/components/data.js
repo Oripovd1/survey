@@ -56,6 +56,7 @@ export const birthDate = {
 }
 export const age = {
   id: 6,
+  multiple: true,
   title: 'Скажите, пожалуйста, сколько полных лет вам исполнилось?',
   answers: [
     {
@@ -64,19 +65,19 @@ export const age = {
     },
     {
       title: '18-20',
-      linked: true,
+      linked: false,
     },
     {
       title: '20-25',
-      linked: true,
+      linked: false,
     },
     {
       title: '25-30',
-      linked: true,
+      linked: false,
     },
     {
       title: '30+',
-      linked: true,
+      linked: false,
     },
   ],
 }
@@ -132,23 +133,24 @@ export const country = {
 }
 export const district = {
   id: 8,
+  multiple: true,
   title: 'Скажите, пожалуйста, в каком районе города вы проживаете?',
   answers: [
     {
       title: 'Алмазарский район (Собир Рахимовский район)',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Бектемирский район',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Сергелиский район',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Чиланзарский район',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Другое',
@@ -158,29 +160,30 @@ export const district = {
 }
 export const specialists = {
   id: 9,
+  multiple: true,
   title:
     'Скажите, пожалуйста, вы сами, кто-нибудь из вашей семьи или близких друзей работают в следующих сферах деятельности?',
   answers: [
     {
       title: 'Маркетинг / маркетинговые исследования / PR',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Реклама',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Радио, пресса, телевидение',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Журналистика',
-      linked: true,
+      linked: false,
     },
     {
       title:
         'Телевизионные коммуникации / предоставление услуг кабельной, спутниковой связи',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Не работает ни в одной из этих сфер деятельности',
@@ -205,6 +208,7 @@ export const permanentResidence = {
 }
 export const typeOfResidence = {
   id: 11,
+  multiple: true,
   title: 'Вы живете в отдельной квартире, коммунальной или собственном доме?',
   answers: [
     {
@@ -221,6 +225,90 @@ export const typeOfResidence = {
     },
     {
       title: 'В общежитии, в гостинице (Другое)',
+      linked: true,
+    },
+  ],
+}
+export const howManyTVs = {
+  id: 12,
+  multiple: true,
+  title:
+    'Скажите, пожалуйста, сколько в целом телевизоров вы используете для просмотра телевидения в своем домохозяйстве?',
+  answers: [
+    {
+      title: 'Один',
+      linked: true,
+    },
+    {
+      title: 'Два',
+      linked: false,
+    },
+    {
+      title: 'Три',
+      linked: false,
+    },
+    {
+      title: 'Четыре',
+      linked: false,
+    },
+    {
+      title: 'Пять и более',
+      linked: false,
+    },
+    {
+      title: 'Ни одного',
+      linked: true,
+    },
+  ],
+}
+export const firstCondition = {
+  id: 13,
+  title: 'Если живет в Самарканде и один телевизор',
+  answers: [
+    {
+      title: 'Q7 = "Самарканд"',
+      linked: false,
+    },
+    {
+      title: 'Q12 = "Один"',
+      linked: false,
+    },
+  ],
+}
+export const typeOfAntenna = {
+  id: 14,
+  multiple: true,
+  title:
+    'Назовите, пожалуйста, тип доставки телевизионного сигнала, которым вы пользуетесь при просмотре телевизора дома: обычная антенна для приема эфирного тв, антенна для приема спутникового телевидения (тарелка), кабельная сеть, IP TV/интернет ТВ?',
+  answers: [
+    {
+      title: 'Обычная антенна для приема эфирного ТВ',
+      linked: false,
+    },
+    {
+      title: 'Специальная антенна для спутникового телевидения',
+      linked: false,
+    },
+    {
+      title: 'Кабельная сеть',
+      linked: false,
+    },
+    {
+      title: 'IP TV / Интернет ТВ',
+      linked: false,
+    },
+  ],
+}
+export const secondCondition = {
+  id: 15,
+  title: '',
+  answers: [
+    {
+      title: 'Q7 = "Термиз"',
+      linked: false,
+    },
+    {
+      title: 'Q23 = "1, 2"',
       linked: false,
     },
   ],
