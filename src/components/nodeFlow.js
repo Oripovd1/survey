@@ -3,6 +3,7 @@ import ReactFlow, {
   removeElements,
   addEdge,
   Controls,
+  MiniMap,
 } from 'react-flow-renderer'
 import QuestionForm from './questionForm'
 import { nodeElements } from './nodeElements'
@@ -78,6 +79,22 @@ const NodeFlow = () => {
         defaultZoom={1.5}
       >
         <Controls />
+        <MiniMap
+          nodeColor={(node) => {
+            switch (node.type) {
+              case 'finish':
+                return '#f5644a'
+              case 'start':
+                return '#00c853'
+              case 'question':
+                return 'rgb(7, 145, 229)'
+              default:
+                return '#eee'
+            }
+          }}
+          nodeStrokeWidth={3}
+          nodeBorderRadius={6}
+        />
       </ReactFlow>
       <QuestionForm
         handleClose={() => setVisible(false)}

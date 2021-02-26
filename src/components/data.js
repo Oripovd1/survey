@@ -136,19 +136,19 @@ export const district = {
   answers: [
     {
       title: 'Алмазарский район (Собир Рахимовский район)',
-      linked: false,
+      linked: true,
     },
     {
       title: 'Бектемирский район',
-      linked: false,
+      linked: true,
     },
     {
       title: 'Сергелиский район',
-      linked: false,
+      linked: true,
     },
     {
       title: 'Чиланзарский район',
-      linked: false,
+      linked: true,
     },
     {
       title: 'Другое',

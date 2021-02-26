@@ -93,7 +93,13 @@ export const nodeElements = [
     id: '14',
     type: 'question',
     data: specialists,
-    position: { x: 3300, y: 2180 },
+    position: { x: 3300, y: 2280 },
+  },
+  {
+    id: '15',
+    type: 'finish',
+    data: { label: 'Finish' },
+    position: { x: 3940, y: 2800 },
   },
   // edges
   {
@@ -181,5 +187,35 @@ export const nodeElements = [
     source: '11',
     target: '13',
     sourceHandle: '4',
+  },
+  {
+    id: 'e11a-14',
+    source: '11',
+    target: '14',
+    sourceHandle: '0',
+  },
+  {
+    id: 'e11b-14',
+    source: '11',
+    target: '14',
+    sourceHandle: '1',
+  },
+  {
+    id: 'e11c-14',
+    source: '11',
+    target: '14',
+    sourceHandle: '2',
+  },
+  {
+    id: 'e11d-14',
+    source: '11',
+    target: '14',
+    sourceHandle: '3',
+  },
+  {
+    id: 'e14f-15',
+    source: '14',
+    target: '15',
+    sourceHandle: '5',
   },
 ]
