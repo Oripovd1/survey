@@ -7,7 +7,6 @@ import ReactFlow, {
 import QuestionForm from './questionForm'
 import { QuestionNode, StartNode, FinishNode, ConditionNode } from './nodeTypes'
 import { useSelector } from 'react-redux'
-import ConditionForm from './conditionForm'
 
 const onNodeDragStop = (event, node) => console.log('drag stop', node)
 
