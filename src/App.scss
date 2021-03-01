@@ -80,6 +80,9 @@ body {
   opacity: 0;
   animation: none;
 }
+.ant-drawer-title {
+  text-transform: capitalize;
+}
 .react-flow__edge-path {
   stroke: rgb(7, 145, 229) !important;
   stroke-width: 3 !important;
@@ -212,13 +215,22 @@ body {
       background-color: #fff;
       font-size: 12px;
       line-height: 22px;
-      color: rgba(167, 167, 167, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+      p {
+        font-size: inherit;
+        text-align: center;
+      }
     }
   }
   .react-flow__handle-left {
     width: 24px;
     height: 24px;
     left: -25px;
+  }
+  .react-flow__handle-right {
+    width: 24px;
+    height: 24px;
+    right: -25px;
   }
 }
 .react-flow__node-condition {
@@ -231,3 +243,17 @@ body {
   border-radius: 6px;
   cursor: pointer !important;
 }
+.condition-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    margin: 0 10px;
+    margin-bottom: 12px;
+  }
+}
+// .condition-edge {
+//   .react-flow__edge-path {
+//     stroke: #ffbd5a !important;
+//   }
+// }

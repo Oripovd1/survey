@@ -141,19 +141,19 @@ export const nodeElements = [
     id: '21',
     type: 'condition',
     data: firstCondition,
-    position: { x: 6020, y: 3520 },
+    position: { x: 6060, y: 4260 },
   },
   {
     id: '22',
     type: 'finish',
     data: { label: 'Finish' },
-    position: { x: 6085, y: 3800 },
+    position: { x: 6125, y: 4540 },
   },
   {
     id: '23',
     type: 'question',
     data: typeOfAntenna,
-    position: { x: 6000, y: 4340 },
+    position: { x: 6360, y: 4460 },
   },
   {
     id: '24',
@@ -161,13 +161,15 @@ export const nodeElements = [
     data: { label: 'Finish' },
     position: { x: 5885, y: 4400 },
   },
-  {
-    id: '25',
-    type: 'condition',
-    data: secondCondition,
-    position: { x: 6840, y: 4400 },
-  },
-  // edges
+  // {
+  //   id: '25',
+  //   type: 'condition',
+  //   data: secondCondition,
+  //   position: { x: 7100, y: 4920 },
+  // },
+]
+
+export const nodeEdges = [
   {
     id: 'e1-2',
     source: '1',
@@ -284,23 +286,17 @@ export const nodeElements = [
     sourceHandle: '3',
   },
   {
-    id: 'e19a-21',
-    source: '19',
-    target: '21',
-    sourceHandle: '0',
-    targetHandle: '1',
-  },
-  {
-    id: 'e10b-21',
-    source: '10',
-    target: '21',
-    sourceHandle: '1',
-    targetHandle: '0',
-  },
-  {
     id: 'e21-22',
     source: '21',
     target: '22',
+    className: 'condition-edge'
+  },
+  {
+    id: 'e21-23',
+    source: '21',
+    target: '23',
+    sourceHandle: '0',
+    className: 'condition-edge'
   },
   {
     id: 'e19e-24',
@@ -311,13 +307,14 @@ export const nodeElements = [
   {
     id: 'e19c-23',
     source: '19',
-    target: '23',
+    target: '21',
     sourceHandle: '12',
+    className: 'condition-edge'
   },
-  {
-    id: 'e23a-25',
-    source: '23',
-    target: '25',
-    sourceHandle: '14',
-  },
+  // {
+  //   id: 'e23a-25',
+  //   source: '23',
+  //   target: '25',
+  //   sourceHandle: '14',
+  // },
 ]

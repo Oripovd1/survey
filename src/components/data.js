@@ -237,7 +237,7 @@ export const howManyTVs = {
   answers: [
     {
       title: 'Один',
-      linked: true,
+      linked: false,
     },
     {
       title: 'Два',
@@ -264,13 +264,12 @@ export const howManyTVs = {
 export const firstCondition = {
   id: 13,
   title: 'Если живет в Самарканде и один телевизор',
-  answers: [
+  conditions: [
     {
-      title: 'Q7 = "Самарканд"',
-      linked: false,
-    },
-    {
-      title: 'Q12 = "Один"',
+      first: 'Q7',
+      second: '"Самарканд"',
+      third: 'Q12',
+      fourth: '"Один"',
       linked: false,
     },
   ],
@@ -302,13 +301,12 @@ export const typeOfAntenna = {
 export const secondCondition = {
   id: 15,
   title: '',
-  answers: [
+  conditions: [
     {
-      title: 'Q7 = "Термиз"',
-      linked: false,
-    },
-    {
-      title: 'Q23 = "1, 2"',
+      first: 'Q7',
+      second: '"Термиз"',
+      third: 'Q23',
+      fourth: '"1, 2"',
       linked: false,
     },
   ],

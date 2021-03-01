@@ -10,6 +10,13 @@ export default memo(({ data }) => {
   return (
     <>
       <Handle
+        type='target'
+        position='top'
+        onConnect={(params) => console.log('handle onConnect', params)}
+      >
+        <ExpandMore />
+      </Handle>
+      <Handle
         type='source'
         position='bottom'
         onConnect={(params) => console.log('handle onConnect', params)}
@@ -22,17 +29,23 @@ export default memo(({ data }) => {
         </h3>
         <p>{data.title}</p>
         <ul className='answer_list'>
-          {data.answers.map((answer, index) => (
+          {data.conditions.map((condition, index) => (
             <li key={index}>
-              {answer.title}
+              <p>
+                <span>{condition.first}</span> == {condition.second}
+              </p>
+              <p>&&</p>
+              <p>
+                <span>{condition.third}</span> == {condition.fourth}
+              </p>
               <Handle
                 type='source'
-                position='left'
+                position='right'
                 id={index.toString()}
-                className={answer.linked ? 'linked' : ''}
+                className={condition.linked ? 'linked' : ''}
                 onClick={(event) => setCurrentElement(event.target)}
               >
-                {answer.linked ? '' : <ChevronRight />}
+                {condition.linked ? '' : <ChevronRight />}
               </Handle>
             </li>
           ))}

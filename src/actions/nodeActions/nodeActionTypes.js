@@ -1,0 +1,6 @@
+export const nodeActionTypes = {
+  ADD_NODE: 'ADD_NODE',
+  REMOVE_NODE: 'REMOVE_NODE',
+  UPDATE_NODE: 'UPDATE_NODE',
+  CLEAR_NODE: 'CLEAR_NODE',
+}

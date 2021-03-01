@@ -3,11 +3,11 @@ import ReactFlow, {
   removeElements,
   addEdge,
   Controls,
-  MiniMap,
 } from 'react-flow-renderer'
 import QuestionForm from './questionForm'
-import { nodeElements } from './nodeElements'
 import { QuestionNode, StartNode, FinishNode, ConditionNode } from './nodeTypes'
+import { useSelector } from 'react-redux'
+import ConditionForm from './conditionForm'
 
 const onNodeDragStop = (event, node) => console.log('drag stop', node)
 
@@ -23,20 +23,27 @@ const nodeTypes = {
 const NodeFlow = () => {
   const [reactflowInstance, setReactflowInstance] = useState(null)
   const [elements, setElements] = useState([])
-  const [visible, setVisible] = useState(false)
+  const [visibleQuestion, setVisibleQuestion] = useState(false)
   const [currentNode, setCurrentNode] = useState({})
 
-  console.log('elements => ', elements)
+  const nodeElements = useSelector((state) => state.nodeElements.nodes)
+  const nodeEdges = useSelector((state) => state.nodeElements.edges)
+
+  console.log('elements => ', nodeElements)
+  console.log('edges => ', nodeEdges)
 
   const onElementClick = (event, element) => {
-    setVisible(true)
-    setCurrentNode(element)
+    if (element.type === 'question' || element.type === 'condition') {
+      setVisibleQuestion(true)
+      setCurrentNode(element)
+    }
     console.log('click', element)
   }
 
   useEffect(() => {
-    setElements(nodeElements)
-  }, [])
+    const allNodeElements = nodeElements.concat(nodeEdges)
+    setElements(allNodeElements)
+  }, [nodeElements, nodeEdges])
   useEffect(() => {
     if (reactflowInstance && elements.length > 0) {
       reactflowInstance.fitView()
@@ -63,6 +70,7 @@ const NodeFlow = () => {
     },
     [reactflowInstance]
   )
+  console.log('reactflowInstance => ', reactflowInstance)
   return (
     <div>
       <ReactFlow
@@ -77,10 +85,12 @@ const NodeFlow = () => {
         connectionLineStyle={connectionLineStyle}
         snapToGrid={true}
         snapGrid={snapGrid}
-        defaultZoom={1.5}
+        minZoom={0.1}
+        maxZoom={2}
+        defaultZoom={2}
       >
         <Controls />
-        <MiniMap
+        {/* <MiniMap
           nodeColor={(node) => {
             switch (node.type) {
               case 'finish':
@@ -95,12 +105,12 @@ const NodeFlow = () => {
           }}
           nodeStrokeWidth={3}
           nodeBorderRadius={6}
-        />
+        /> */}
       </ReactFlow>
       <QuestionForm
-        handleClose={() => setVisible(false)}
-        open={visible}
-        data={currentNode?.data}
+        handleClose={() => setVisibleQuestion(false)}
+        open={visibleQuestion}
+        node={currentNode}
       />
     </div>
   )
