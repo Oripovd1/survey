@@ -17,16 +17,16 @@ export default function QuestionForm({ handleClose, open, node }) {
         <Row gutter={12}>
           <Col span={24}>
             <Form.Item
-              key='number'
+              key={15}
               name='number'
               label='Number'
               rules={[{ required: true, message: 'Please enter number' }]}
               style={{ marginBottom: '12px' }}
             >
-              <Input value={`Q${node?.data?.id}`} />
+              <Input value={`Q${node?.data?.id}`} placeholder={`Q${node?.data?.id}`} />
             </Form.Item>
             <Form.Item
-              key='title'
+              key={16}
               name='title'
               label='Title'
               rules={[
@@ -34,7 +34,7 @@ export default function QuestionForm({ handleClose, open, node }) {
               ]}
               style={{ marginBottom: '12px' }}
             >
-              <Input value={node?.data?.title} />
+              <Input value={node?.data?.title} placeholder={node?.data?.title} />
             </Form.Item>
           </Col>
           <Col span={24}>

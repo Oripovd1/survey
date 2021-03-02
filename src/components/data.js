@@ -315,7 +315,7 @@ export const secondCondition = {
           second: '"Термиз"',
         },
         {
-          first: 'Q23',
+          first: 'Q12',
           second: '1',
         },
       ],
@@ -324,11 +324,11 @@ export const secondCondition = {
     {
       condition: [
         {
-          first: 'Q8',
+          first: 'Q7',
           second: '"Самарканд"',
         },
         {
-          first: 'Q28',
+          first: 'Q12',
           second: '2',
         },
       ],
@@ -337,11 +337,11 @@ export const secondCondition = {
     {
       condition: [
         {
-          first: 'Q8',
+          first: 'Q7',
           second: '"Карши"',
         },
         {
-          first: 'Q28',
+          first: 'Q12',
           second: '2',
           type: '!=',
         },
@@ -351,11 +351,11 @@ export const secondCondition = {
     {
       condition: [
         {
-          first: 'Q8',
+          first: 'Q7',
           second: '"Чирчик"',
         },
         {
-          first: 'Q28',
+          first: 'Q12',
           second: '2',
           type: '!=',
         },
@@ -365,11 +365,11 @@ export const secondCondition = {
     {
       condition: [
         {
-          first: 'Q8',
+          first: 'Q7',
           second: '"Жиззах"',
         },
         {
-          first: 'Q28',
+          first: 'Q12',
           second: '3',
         },
       ],
@@ -378,11 +378,11 @@ export const secondCondition = {
     {
       condition: [
         {
-          first: 'Q8',
+          first: 'Q7',
           second: '"Шахрисабз"',
         },
         {
-          first: 'Q28',
+          first: 'Q12',
           second: '4',
         },
       ],
@@ -391,11 +391,11 @@ export const secondCondition = {
     {
       condition: [
         {
-          first: 'Q8',
+          first: 'Q7',
           second: '"Ташкент"',
         },
         {
-          first: 'Q28',
+          first: 'Q12',
           second: '3',
         },
       ],
@@ -404,11 +404,11 @@ export const secondCondition = {
     {
       condition: [
         {
-          first: 'Q8',
+          first: 'Q7',
           second: '"Ургенч"',
         },
         {
-          first: 'Q28',
+          first: 'Q12',
           second: '2',
         },
       ],
