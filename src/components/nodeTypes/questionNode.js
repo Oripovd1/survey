@@ -33,6 +33,7 @@ export default memo(({ data }) => {
         />
       )}
       <div className='question'>
+        <span className='question_number'>Q{data.id}</span>
         <h3>{data.title}</h3>
         <ul className='answer_list'>
           {data.answers.map((answer, index) => (

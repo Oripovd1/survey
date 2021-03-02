@@ -17,6 +17,16 @@ export default function QuestionForm({ handleClose, open, node }) {
         <Row gutter={12}>
           <Col span={24}>
             <Form.Item
+              key='number'
+              name='number'
+              label='Number'
+              rules={[{ required: true, message: 'Please enter number' }]}
+              style={{ marginBottom: '12px' }}
+            >
+              <Input value={`Q${node?.data?.id}`} />
+            </Form.Item>
+            <Form.Item
+              key='title'
               name='title'
               label='Title'
               rules={[

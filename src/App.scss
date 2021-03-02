@@ -51,6 +51,13 @@ body {
   }
 }
 .question {
+  .question_number {
+    display: inline-block;
+    margin-top: -16px;
+    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: bold;
+  }
   h3 {
     margin: 0;
     font-size: 24px;
