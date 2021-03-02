@@ -19,13 +19,12 @@ export default function QuestionForm({ handleClose, open, node }) {
             <Form.Item
               name='title'
               label='Title'
-              initialValue={node?.data?.title}
               rules={[
                 { required: true, message: 'Please enter question title' },
               ]}
               style={{ marginBottom: '12px' }}
             >
-              <Input placeholder={node?.data?.title} />
+              <Input value={node?.data?.title} />
             </Form.Item>
           </Col>
           <Col span={24}>
@@ -51,11 +50,10 @@ export default function QuestionForm({ handleClose, open, node }) {
                 <Form.Item
                   key={index}
                   name={answer.next_node_id}
-                  initialValue={answer.title}
                   rules={[{ required: true, message: 'Please enter answer' }]}
                   style={{ marginBottom: '12px' }}
                 >
-                  <Input placeholder={answer.title} />
+                  <Input placeholder={answer.title} value={answer.title} />
                 </Form.Item>
               ))}
             </Col>
@@ -71,25 +69,23 @@ export default function QuestionForm({ handleClose, open, node }) {
                     <Form.Item
                       key={1}
                       name={item.next_node_id}
-                      initialValue={item.first}
                       rules={[
                         { required: true, message: 'Please enter condition' },
                       ]}
                       style={{ marginBottom: '12px' }}
                     >
-                      <Input placeholder={item.first} />
+                      <Input placeholder={item.first} value={item.first} />
                     </Form.Item>
                     <p>{item.type || '=='}</p>
                     <Form.Item
                       key={2}
                       name={item.next_node_id}
-                      initialValue={item.second}
                       rules={[
                         { required: true, message: 'Please enter condition' },
                       ]}
                       style={{ marginBottom: '12px' }}
                     >
-                      <Input placeholder={item.second} />
+                      <Input placeholder={item.second} value={item.second} />
                     </Form.Item>
                   </div>
                 ))}
