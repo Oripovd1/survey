@@ -266,10 +266,16 @@ export const firstCondition = {
   title: 'Если живет в Самарканде и один телевизор',
   conditions: [
     {
-      first: 'Q7',
-      second: '"Самарканд"',
-      third: 'Q12',
-      fourth: '"Один"',
+      condition: [
+        {
+          first: 'Q7',
+          second: '"Самарканд"',
+        },
+        {
+          first: 'Q12',
+          second: '"Один"',
+        },
+      ],
       linked: false,
     },
   ],
@@ -303,10 +309,124 @@ export const secondCondition = {
   title: '',
   conditions: [
     {
-      first: 'Q7',
-      second: '"Термиз"',
-      third: 'Q23',
-      fourth: '"1, 2"',
+      condition: [
+        {
+          first: 'Q7',
+          second: '"Термиз"',
+        },
+        {
+          first: 'Q23',
+          second: '1',
+        },
+      ],
+      linked: false,
+    },
+    {
+      condition: [
+        {
+          first: 'Q8',
+          second: '"Самарканд"',
+        },
+        {
+          first: 'Q28',
+          second: '2',
+        },
+      ],
+      linked: false,
+    },
+    {
+      condition: [
+        {
+          first: 'Q8',
+          second: '"Карши"',
+        },
+        {
+          first: 'Q28',
+          second: '2',
+          type: '!=',
+        },
+      ],
+      linked: false,
+    },
+    {
+      condition: [
+        {
+          first: 'Q8',
+          second: '"Чирчик"',
+        },
+        {
+          first: 'Q28',
+          second: '2',
+          type: '!=',
+        },
+      ],
+      linked: false,
+    },
+    {
+      condition: [
+        {
+          first: 'Q8',
+          second: '"Жиззах"',
+        },
+        {
+          first: 'Q28',
+          second: '3',
+        },
+      ],
+      linked: false,
+    },
+    {
+      condition: [
+        {
+          first: 'Q8',
+          second: '"Шахрисабз"',
+        },
+        {
+          first: 'Q28',
+          second: '4',
+        },
+      ],
+      linked: false,
+    },
+    {
+      condition: [
+        {
+          first: 'Q8',
+          second: '"Ташкент"',
+        },
+        {
+          first: 'Q28',
+          second: '3',
+        },
+      ],
+      linked: false,
+    },
+    {
+      condition: [
+        {
+          first: 'Q8',
+          second: '"Ургенч"',
+        },
+        {
+          first: 'Q28',
+          second: '2',
+        },
+      ],
+      linked: false,
+    },
+  ],
+}
+export const payFee = {
+  id: 16,
+  multiple: false,
+  title: 'Платите абонентскую плату',
+  answers: [
+    {
+      title: 'Да',
+      linked: false,
+    },
+    {
+      title: 'Нет',
       linked: false,
     },
   ],

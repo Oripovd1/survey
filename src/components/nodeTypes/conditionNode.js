@@ -31,13 +31,14 @@ export default memo(({ data }) => {
         <ul className='answer_list'>
           {data.conditions.map((condition, index) => (
             <li key={index}>
-              <p>
-                <span>{condition.first}</span> == {condition.second}
-              </p>
-              <p>&&</p>
-              <p>
-                <span>{condition.third}</span> == {condition.fourth}
-              </p>
+              {condition.condition.map((item, index) => (
+                <div key={index} className='condition_item'>
+                  <p>
+                    <span>{item.first}</span> {item.type || '=='} {item.second}
+                  </p>
+                  <p className='condition_type'>&&</p>
+                </div>
+              ))}
               <Handle
                 type='source'
                 position='right'

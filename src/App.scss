@@ -220,6 +220,11 @@ body {
         font-size: inherit;
         text-align: center;
       }
+      .condition_item:nth-child(2) {
+        .condition_type {
+          display: none;
+        }
+      }
     }
   }
   .react-flow__handle-left {
@@ -242,6 +247,9 @@ body {
   border: 1px solid #ffbd5a;
   border-radius: 6px;
   cursor: pointer !important;
+  .react-flow__handle.target {
+    background-color: #f5644a !important;
+  }
 }
 .condition-row {
   display: flex;
@@ -252,8 +260,8 @@ body {
     margin-bottom: 12px;
   }
 }
-// .condition-edge {
-//   .react-flow__edge-path {
-//     stroke: #ffbd5a !important;
-//   }
-// }
+.condition-edge {
+  .react-flow__edge-path {
+    stroke: #ffbd5a !important;
+  }
+}

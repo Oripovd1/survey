@@ -6,7 +6,7 @@ import ReactFlow, {
 } from 'react-flow-renderer'
 import QuestionForm from './questionForm'
 import { QuestionNode, StartNode, FinishNode, ConditionNode } from './nodeTypes'
-import { useSelector } from 'react-redux'
+import { nodeElements, nodeEdges } from './nodeElements'
 
 const onNodeDragStop = (event, node) => console.log('drag stop', node)
 
@@ -25,11 +25,8 @@ const NodeFlow = () => {
   const [visibleQuestion, setVisibleQuestion] = useState(false)
   const [currentNode, setCurrentNode] = useState({})
 
-  const nodeElements = useSelector((state) => state.nodeElements.nodes)
-  const nodeEdges = useSelector((state) => state.nodeElements.edges)
-
-  console.log('elements => ', nodeElements)
-  console.log('edges => ', nodeEdges)
+  // const nodeElements = useSelector((state) => state.nodeElements.nodes)
+  // const nodeEdges = useSelector((state) => state.nodeElements.edges)
 
   const onElementClick = (event, element) => {
     if (element.type === 'question' || element.type === 'condition') {
@@ -42,7 +39,7 @@ const NodeFlow = () => {
   useEffect(() => {
     const allNodeElements = nodeElements.concat(nodeEdges)
     setElements(allNodeElements)
-  }, [nodeElements, nodeEdges])
+  }, [])
   useEffect(() => {
     if (reactflowInstance && elements.length > 0) {
       reactflowInstance.fitView()

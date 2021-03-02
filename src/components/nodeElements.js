@@ -14,6 +14,7 @@ import {
   firstCondition,
   typeOfAntenna,
   secondCondition,
+  payFee,
 } from './data'
 
 export const nodeElements = [
@@ -161,12 +162,24 @@ export const nodeElements = [
     data: { label: 'Finish' },
     position: { x: 5885, y: 4400 },
   },
-  // {
-  //   id: '25',
-  //   type: 'condition',
-  //   data: secondCondition,
-  //   position: { x: 7100, y: 4920 },
-  // },
+  {
+    id: '25',
+    type: 'condition',
+    data: secondCondition,
+    position: { x: 7100, y: 4920 },
+  },
+  {
+    id: '26',
+    type: 'question',
+    data: payFee,
+    position: { x: 6990, y: 5900 },
+  },
+  {
+    id: '27',
+    type: 'finish',
+    data: { label: 'Finish' },
+    position: { x: 7480, y: 5900 },
+  },
 ]
 
 export const nodeEdges = [
@@ -289,14 +302,12 @@ export const nodeEdges = [
     id: 'e21-22',
     source: '21',
     target: '22',
-    className: 'condition-edge'
   },
   {
     id: 'e21-23',
     source: '21',
     target: '23',
     sourceHandle: '0',
-    className: 'condition-edge'
   },
   {
     id: 'e19e-24',
@@ -309,12 +320,66 @@ export const nodeEdges = [
     source: '19',
     target: '21',
     sourceHandle: '12',
-    className: 'condition-edge'
+    className: 'condition-edge',
   },
-  // {
-  //   id: 'e23a-25',
-  //   source: '23',
-  //   target: '25',
-  //   sourceHandle: '14',
-  // },
+  {
+    id: 'e23a-25',
+    source: '23',
+    target: '25',
+    sourceHandle: '14',
+    className: 'condition-edge',
+  },
+  {
+    id: 'e25-26',
+    source: '25',
+    target: '26',
+  },
+  {
+    id: 'e25a-27',
+    source: '25',
+    target: '27',
+    sourceHandle: '0',
+  },
+  {
+    id: 'e25b-27',
+    source: '25',
+    target: '27',
+    sourceHandle: '1',
+  },
+  {
+    id: 'e25c-27',
+    source: '25',
+    target: '27',
+    sourceHandle: '2',
+  },
+  {
+    id: 'e25d-27',
+    source: '25',
+    target: '27',
+    sourceHandle: '3',
+  },
+  {
+    id: 'e25e-27',
+    source: '25',
+    target: '27',
+    sourceHandle: '4',
+  },
+  {
+    id: 'e25f-27',
+    source: '25',
+    target: '27',
+    sourceHandle: '5',
+  },
+  {
+    id: 'e25g-27',
+    source: '25',
+    target: '27',
+    sourceHandle: '6',
+  },
+  {
+    id: 'e25h-27',
+    source: '25',
+    target: '27',
+    sourceHandle: '7',
+  },
 ]
