@@ -4,6 +4,54 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.App {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  display: grid;
+}
+
+.sidebar {
+  height: 100%;
+  grid-template-columns: 260px 1fr;
+  background: rgb(241, 241, 241);
+  position: relative;
+  transition: 0.5s;
+}
+.sidebar-close {
+  grid-template-columns: 0 1fr;
+  transition: 0.5s;
+}
+
+
+.sidebar-btn {
+  width: 20px;
+  height: 80px;
+  border: none;
+  outline: none;
+  background: #0064e6;
+  color: white;
+  border-radius: 0px;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px;
+  position: absolute;
+  top: calc(50% - 10px);
+  right: -20px;
+  z-index: 99;
+  cursor: pointer;
+}
+.sidebar-content-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: 0.5s;
+}
+
 .react-flow__node-question {
   display: block;
   min-width: 300px;
