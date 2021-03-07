@@ -10,12 +10,13 @@ import { useState } from 'react'
 import { store } from './store'
 
 // Components list
-import Content from "./components/sidebar/content";
 import Navbar from "./components/navbar/navbar";
 import NodeFlow from './components/nodeFlow'
+import Sidebar from './components/sidebar/sidebar'
+import RightBar from './layouts/rightbar'
 
 function App() {
-  const [collapsed, setCollapsed] = useState(true)
+  const [collapsed, setCollapsed] = useState (true)
   const persistor = persistStore(store)
 
   return (
@@ -24,15 +25,9 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <div className='App'>
             <Navbar />
-            <div className="sidebar" style={{
-              maxWidth: collapsed ? 0 : 'var(--sidebar-width)'
-            }}>
-              <div className="sidebar-content-wrapper" >
-                <Content />
-              </div>
-              <button className="sidebar-btn" onClick={() => { setCollapsed(prev => !prev) }}>{collapsed ? '>' : '<'}</button>
-            </div>
-            <div className="nodeflow"><NodeFlow /></div>
+            <Sidebar setCollapsed={setCollapsed} collapsed={collapsed} />
+            <NodeFlow />
+            <RightBar />
           </div>
         </PersistGate>
       </Provider>
