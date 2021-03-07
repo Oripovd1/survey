@@ -1,0 +1,14 @@
+.card-body {
+    padding: 20px;
+}
+
+.card-body-main {
+    font-size: 14px;
+}
+.CardRoot:hover {
+    cursor: pointer;
+    background-color: #F0F0F0;
+}
+.new1{
+    border: 1px solid #EBEBEB;
+}

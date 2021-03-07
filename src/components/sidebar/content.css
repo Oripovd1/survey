@@ -1,0 +1,15 @@
+
+.Header_title {
+    color: rgb(41, 41, 41);
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    padding: 20px;
+}
+.Header_title h2 {
+    padding-top: 20%;
+    margin-bottom: 10px;
+    font-size: 22px;
+    height: 100%;
+    text-align: start;
+    place-items: end;
+}

@@ -75,7 +75,7 @@ const NodeFlow = () => {
         onElementsRemove={onElementsRemove}
         onConnect={onConnect}
         onNodeDragStop={onNodeDragStop}
-        style={{ background: '#e5e5e5', height: '100vh' }}
+        style={{ background: '#e5e5e5', height: '95vh'}}
         onLoad={onLoad}
         nodeTypes={nodeTypes}
         connectionLineStyle={connectionLineStyle}

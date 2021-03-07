@@ -8,17 +8,16 @@ body {
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
-  display: fixed;
   overflow: auto;
   top: 0;
   left: 0;
   display: grid;
+  grid-template-columns: auto 1fr;
 }
 
 .sidebar {
   height: 100%;
-  grid-template-columns: 260px 1fr;
-  background: rgb(241, 241, 241);
+  background: rgb(255, 255, 255);
   position: relative;
   transition: 0.5s;
 }
@@ -26,7 +25,9 @@ body {
   grid-template-columns: 0 1fr;
   transition: 0.5s;
 }
-
+.nodeflow{
+  overflow: hidden;
+}
 
 .sidebar-btn {
   width: 20px;
@@ -44,12 +45,25 @@ body {
   z-index: 99;
   cursor: pointer;
 }
+
 .sidebar-content-wrapper {
-  width: 100%;
+  width: var(--sidebar-width);
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  transition: 0.5s;
+}
+
+.a-row {
+  display: flex;
+  flex-direction: row;
+}
+.a-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.a-justify-center {
+  justify-content: center;
 }
 
 .react-flow__node-question {
