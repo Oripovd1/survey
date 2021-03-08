@@ -12,9 +12,7 @@ import {
   ConditionNode,
   TextQuestion,
 } from './nodeTypes'
-import { useSelector } from 'react-redux'
-
-const onNodeDragStop = (event, node) => console.log('drag stop', node)
+import { useSelector, useDispatch } from 'react-redux'
 
 const connectionLineStyle = { stroke: '#000' }
 const snapGrid = [20, 20]
@@ -32,6 +30,8 @@ const NodeFlow = () => {
   const [visibleQuestion, setVisibleQuestion] = useState(false)
   const [currentNode, setCurrentNode] = useState({})
 
+  const dispatch = useDispatch()
+
   const nodeActions = useSelector((state) => state.actions.actions)
   const nodeQuestions = useSelector((state) => state.questions.questions)
   const nodeEdges = useSelector((state) => state.relations.relations)
@@ -44,6 +44,10 @@ const NodeFlow = () => {
       console.log('selected element => ', element)
     }
     console.log('click', element)
+  }
+
+  const onNodeDragStop = (event, node) => {
+    dispatch({ type: 'UPDATE_QUESTION', payload: node })
   }
 
   useEffect(() => {

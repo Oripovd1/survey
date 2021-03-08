@@ -12,7 +12,7 @@ body {
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: auto 1fr 400px;
+  grid-template-columns: auto 1fr;
   overflow: hidden;
 }
 
@@ -79,16 +79,27 @@ body {
 .question {
   .question_number {
     display: inline-block;
-    margin-top: -16px;
-    margin-bottom: 10px;
-    font-size: 26px;
-    font-weight: bold;
+    padding: 4px;
+    margin-right: 8px;
+    font-size: 24px;
+    line-height: 22px;
+    font-weight: 500;
+    color: var(--primary-color);
+    border-radius: 4px;
+    background: rgba(0, 122, 255, 0.1);
   }
   h3 {
     margin: 0;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 22px;
     font-weight: normal;
+  }
+  .desc {
+    margin: 0;
+    padding: 0 4px;
+    font-size: 13px;
+    line-height: 22px;
+    color: #8d8d8d;
   }
   .answer_list {
     width: 100%;
