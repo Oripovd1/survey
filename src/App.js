@@ -1,21 +1,37 @@
+// style list
 import 'antd/dist/antd.css'
 import './App.scss'
-import NodeFlow from './components/nodeFlow'
-import { Provider } from 'react-redux'
+
+// Dependencies list
 import { PersistGate } from 'redux-persist/integration/react'
-import { store } from './store'
 import { persistStore } from 'redux-persist'
+import { Provider } from 'react-redux'
+import { useState } from 'react'
+import { store } from './store'
+
+// Components list
+import Navbar from "./components/navbar/navbar";
+import NodeFlow from './components/nodeFlow'
+import Sidebar from './components/sidebar/sidebar'
+import RightBar from './layouts/rightbar'
 
 function App() {
+  const [collapsed, setCollapsed] = useState (true)
   const persistor = persistStore(store)
+
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <div className='App'>
-          <NodeFlow />
-        </div>
-      </PersistGate>
-    </Provider>
+    <div>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <div className='App'>
+            <Navbar />
+            <Sidebar setCollapsed={setCollapsed} collapsed={collapsed} />
+            <NodeFlow />
+            <RightBar />
+          </div>
+        </PersistGate>
+      </Provider>
+    </div>
   )
 }
 

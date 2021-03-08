@@ -4,7 +4,33 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.react-flow__node-question {
+.App {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: auto 1fr 400px;
+  overflow: hidden;
+}
+
+.a-row {
+  display: flex;
+  flex-direction: row;
+}
+.a-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.a-justify-center {
+  justify-content: center;
+}
+
+.react-flow__node-question,
+.react-flow__node-text {
   display: block;
   min-width: 300px;
   max-width: 600px;
@@ -113,7 +139,15 @@ body {
     outline: none;
     cursor: pointer;
     border-bottom: 1px solid #ebebeb;
-    img {
+    &:last-of-type {
+      border-bottom: none;
+    }
+    .imgWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 56px;
+      height: 56px;
       margin-right: 16px;
       border: 1px solid #ebebeb;
       border-radius: 3px;

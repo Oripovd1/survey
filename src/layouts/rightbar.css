@@ -1,0 +1,13 @@
+.rightbar {
+    height: 100%;
+    background: #FFFFFF;
+    position: relative;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    place-items: center;
+    text-align: center;
+    justify-content: center;
+}

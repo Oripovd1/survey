@@ -1,0 +1,33 @@
+.navbar_header_main {
+    background: #007AFF;
+    position: relative;
+    overflow-y: hidden;
+    height: 60px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar_header_main button {
+    background-color: rgba(231, 231, 231, 0.116);
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    margin: 5px;
+    border-radius: 6px;
+    outline: none;
+
+
+}
+.margin_left {
+    margin-right: 10%;
+}
+.a-align-center {
+    place-items: center;
+    align-items: center;
+}   
+.navbar_header_main button:hover {
+    background-color: #ffffff33;
+    cursor: pointer;
+}
