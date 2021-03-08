@@ -3,7 +3,7 @@ import { actionActionTypes } from '../actions/actionActions/actionActionTypes'
 const initialActionState = {
   actions: [
     {
-      id: 1,
+      id: '1',
       type: 'start',
       position: {
         x: 0,

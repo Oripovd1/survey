@@ -14,13 +14,13 @@ export default memo(({ id, type }) => {
     dispatch({
       type: 'ADD_QUESTION',
       payload: {
-        id: 123,
+        id: '123',
         data: {
           number: 'Q1',
           label: 'Who you are?',
           answers: [
             {
-              id: 1234,
+              id: '1234',
               label: 'Man',
               value: 'Man',
               order: 1,
@@ -37,11 +37,12 @@ export default memo(({ id, type }) => {
     dispatch({
       type: 'ADD_RELATION',
       payload: {
-        id: 32,
+        id: '32',
         source: id,
         target: 123,
       },
     })
+    setCurrentElement(null)
   }
 
   return (
