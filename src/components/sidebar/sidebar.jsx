@@ -1,7 +1,7 @@
 // import React, { useState } from 'react'
 import Content from './content'
 import './sidebar.css'
-const sidebar =  (props) => {
+const Sidebar =  (props) => {
 
     return (
         <div className="sidebar" style={{
@@ -15,4 +15,4 @@ const sidebar =  (props) => {
     );
 };
 
-export default sidebar;
+export default Sidebar;

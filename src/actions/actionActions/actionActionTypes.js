@@ -1,0 +1,7 @@
+export const actionActionTypes = {
+    ADD_ACTION: 'ADD_ACTION',
+    REMOVE_ACTION: 'REMOVE_ACTION',
+    UPDATE_ACTION: 'UPDATE_ACTION',
+    CLEAR_ACTION: 'CLEAR_ACTION',
+  }
+  
