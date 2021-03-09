@@ -2,7 +2,7 @@ import React from 'react'
 import './rightbar.css'
 
 // main layout manager
-const rightbar = () => {
+const Rightbar = () => {
     return (
         <div className="rightbar">
         {/* your template routes here */}
@@ -13,4 +13,4 @@ const rightbar = () => {
 };
 
 
-export default rightbar;
+export default Rightbar;

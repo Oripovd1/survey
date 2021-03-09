@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import Content from './content'
 import './sidebar.css'
-const Sidebar = (props) => {
+const Sidebar = () => {
   const [collapsed, setCollapsed] = useState (true)
-
     return (
         <div className="sidebar" style={{
             maxWidth: collapsed ? 0 : 'var(--sidebar-width)'

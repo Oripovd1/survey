@@ -5,8 +5,14 @@ import ReactFlow, {
   Controls,
 } from 'react-flow-renderer'
 import QuestionForm from './questionForm'
-import { QuestionNode, StartNode, FinishNode, ConditionNode } from './nodeTypes'
-import { nodeElements, nodeEdges } from './nodeElements'
+import {
+  QuestionNode,
+  StartNode,
+  FinishNode,
+  ConditionNode,
+  TextQuestion,
+} from './nodeTypes'
+import { useSelector } from 'react-redux'
 
 const onNodeDragStop = (event, node) => console.log('drag stop', node)
 
@@ -17,6 +23,7 @@ const nodeTypes = {
   start: StartNode,
   finish: FinishNode,
   condition: ConditionNode,
+  text: TextQuestion,
 }
 
 const NodeFlow = () => {
@@ -25,21 +32,23 @@ const NodeFlow = () => {
   const [visibleQuestion, setVisibleQuestion] = useState(false)
   const [currentNode, setCurrentNode] = useState({})
 
-  // const nodeElements = useSelector((state) => state.nodeElements.nodes)
-  // const nodeEdges = useSelector((state) => state.nodeElements.edges)
+  const nodeActions = useSelector((state) => state.actions.actions)
+  const nodeQuestions = useSelector((state) => state.questions.questions)
+  const nodeEdges = useSelector((state) => state.relations.relations)
+  const state = useSelector((state) => state)
+  console.log('state => ', state)
+  console.log('elements => ', elements)
 
   const onElementClick = (event, element) => {
     if (element.type === 'question' || element.type === 'condition') {
-      setVisibleQuestion(true)
-      setCurrentNode(element)
+      console.log('selected element => ', element)
     }
     console.log('click', element)
   }
 
   useEffect(() => {
-    const allNodeElements = nodeElements.concat(nodeEdges)
-    setElements(allNodeElements)
-  }, [])
+    setElements([...nodeActions, ...nodeQuestions, ...nodeEdges])
+  }, [nodeActions, nodeQuestions, nodeEdges])
   useEffect(() => {
     if (reactflowInstance && elements.length > 0) {
       reactflowInstance.fitView()
