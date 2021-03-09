@@ -3,6 +3,7 @@ import { drawerActionTypes } from '../actions/drawerActions/drawerActionTypes'
 const initialDrawerState = {
   open: false,
   source: null,
+  currentElement: null,
 }
 
 const actionReducer = (state = initialDrawerState, action) => {
@@ -19,11 +20,18 @@ const actionReducer = (state = initialDrawerState, action) => {
         ...state,
         open: false,
         source: null,
+        currentElement: null,
       }
     case drawerActionTypes.TOGGLE_DRAWER:
       return {
         ...state,
-        actions: !state.open,
+        open: !state.open,
+      }
+    case drawerActionTypes.EDIT_QUESTION:
+      return {
+        ...state,
+        open: true,
+        currentElement: payload,
       }
     default:
       return state

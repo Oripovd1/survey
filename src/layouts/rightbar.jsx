@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 // main layout manager
 const Rightbar = () => {
   const dispatch = useDispatch()
-  const { open, source } = useSelector((state) => state.drawer)
+  const { open, source, currentElement } = useSelector((state) => state.drawer)
   const questions = useSelector((state) => state.questions.questions)
   const relations = useSelector((state) => state.relations.relations)
   const actions = useSelector((state) => state.actions.actions)
@@ -14,50 +14,61 @@ const Rightbar = () => {
   const { handleSubmit, register, reset } = useForm()
 
   const onSubmit = (data) => {
-    const nodeElements = questions.concat(relations, actions)
-    const questionNumber = questions.length + 1
-    const questionId = nodeElements.length + 1
-    const relationId = nodeElements.length + 2
-
-    dispatch({
-      type: 'ADD_QUESTION',
-      payload: {
-        id: questionId.toString(),
+    if (currentElement) {
+      const payload = {
+        id: currentElement.id,
         data: {
-          number: `Q${questionNumber}`,
+          number: currentElement.data.number,
           label: data.title,
           description: data.desc,
-          answers: [
-            {
-              id: questionId.toString(),
-              label: data.answer,
-              value: data.answer,
-              order: 1,
-            },
-            {
-              id: relationId.toString(),
-              label: data.answer2,
-              value: data.answer2,
-              order: 1,
-            },
-          ],
+          answers: currentElement.data.answers,
         },
-        type: 'text',
-        position: {
-          x: source.x + 200,
-          y: source.y + 200,
+        type: currentElement.type,
+        position: currentElement.position,
+      }
+      dispatch({
+        type: 'UPDATE_QUESTION',
+        payload,
+      })
+    } else {
+      const nodeElements = questions.concat(relations, actions)
+      const questionNumber = questions.length + 1
+      const questionId = nodeElements.length + 1
+      const relationId = nodeElements.length + 2
+
+      dispatch({
+        type: 'ADD_QUESTION',
+        payload: {
+          id: questionId.toString(),
+          data: {
+            number: `Q${questionNumber}`,
+            label: data.title,
+            description: data.desc,
+            answers: [
+              {
+                id: '',
+                label: '',
+                value: '',
+              },
+            ],
+          },
+          type: 'text',
+          position: {
+            x: source.x + 200,
+            y: source.y + 200,
+          },
         },
-      },
-    })
-    dispatch({
-      type: 'ADD_RELATION',
-      payload: {
-        id: relationId.toString(),
-        source: source.id,
-        target: questionId.toString(),
-        sourceHandle: source.handleId || '',
-      },
-    })
+      })
+      dispatch({
+        type: 'ADD_RELATION',
+        payload: {
+          id: relationId.toString(),
+          source: source.id,
+          target: questionId.toString(),
+          sourceHandle: source.handleId || '',
+        },
+      })
+    }
 
     dispatch({ type: 'CLOSE_DRAWER' })
     reset()
@@ -93,6 +104,7 @@ const Rightbar = () => {
                 id='title'
                 name='title'
                 type='text'
+                defaultValue={currentElement?.data.label}
                 ref={register}
                 placeholder='Напишите заголовок вопроса'
               />
@@ -108,8 +120,8 @@ const Rightbar = () => {
               />
             </div>
           </div>
-          <div className='form_group'>
-            <h1>Ответ</h1>
+          {/* <div className='form_group'>
+            <h1>Ответы</h1>
             <div className='input_group'>
               <label htmlFor='answer'>Текстовый ответ</label>
               <input
@@ -120,17 +132,7 @@ const Rightbar = () => {
                 placeholder='Введите свой ответ'
               />
             </div>
-            <div className='input_group'>
-              <label htmlFor='answer2'>Текстовый ответ</label>
-              <input
-                id='answer2'
-                name='answer2'
-                type='text'
-                ref={register}
-                placeholder='Введите свой ответ'
-              />
-            </div>
-          </div>
+          </div> */}
         </div>
         <div className='actions'>
           <button className='btn secondary'>Отменить</button>

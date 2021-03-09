@@ -40,8 +40,8 @@ const NodeFlow = () => {
   console.log('elements => ', elements)
 
   const onElementClick = (event, element) => {
-    if (element.type === 'question' || element.type === 'condition') {
-      console.log('selected element => ', element)
+    if (element.type === 'text' || element.type === 'condition') {
+      // dispatch({ type: 'EDIT_QUESTION', payload: element })
     }
     console.log('click', element)
   }
@@ -88,7 +88,7 @@ const NodeFlow = () => {
         onElementsRemove={onElementsRemove}
         onConnect={onConnect}
         onNodeDragStop={onNodeDragStop}
-        style={{ background: '#e5e5e5', height: '94vh' }}
+        style={{ background: '#e5e5e5', height: 'calc(100vh - 60px)' }}
         onLoad={onLoad}
         nodeTypes={nodeTypes}
         connectionLineStyle={connectionLineStyle}

@@ -4,24 +4,48 @@ import { Popover } from '@material-ui/core'
 import { ExpandMore, Add } from '@material-ui/icons'
 import { useDispatch } from 'react-redux'
 
-export default memo(({ data, id, xPos, yPos }) => {
+export default memo(({ data, id, xPos, yPos, type }) => {
   const [currentElement, setCurrentElement] = useState(null)
   const open = Boolean(currentElement)
 
-  const [handleId, setHandleId] = useState(null)
+  // const [handleId, setHandleId] = useState(null)
   const dispatch = useDispatch()
 
-  const createQuestion = () => {
+  const createQuestion = (event) => {
+    event.stopPropagation()
     dispatch({
       type: 'OPEN_DRAWER',
-      payload: { id, x: xPos, y: yPos, handleId },
+      payload: { id, x: xPos, y: yPos },
     })
 
     setCurrentElement(null)
   }
 
+  const handleClickCard = () => {
+    console.log('click question')
+    const payload = {
+      id,
+      data: {
+        number: data.number,
+        label: data.label,
+        description: data.description,
+        answers: data.answers,
+      },
+      type,
+      position: {
+        x: xPos,
+        y: yPos,
+      },
+    }
+    console.log('payload => ', payload)
+    dispatch({
+      type: 'EDIT_QUESTION',
+      payload,
+    })
+  }
+
   return (
-    <>
+    <div className='wrapper' onClick={handleClickCard}>
       <Handle
         type='target'
         position='top'
@@ -33,8 +57,12 @@ export default memo(({ data, id, xPos, yPos }) => {
         type='source'
         position='bottom'
         onConnect={(params) => console.log('handle onConnect', params)}
+        onClick={(event) => {
+          event.stopPropagation()
+          setCurrentElement(event.target)
+        }}
       >
-        <ExpandMore />
+        <Add />
       </Handle>
       {/* {data.multiple && (
         <Handle
@@ -55,18 +83,18 @@ export default memo(({ data, id, xPos, yPos }) => {
           {data.answers.map((answer, index) => (
             <li key={answer.id}>
               {answer.label}
-              <Handle
+              {/* <Handle
                 type='source'
                 position='right'
                 id={answer.id}
                 className={answer.linked ? 'linked' : ''}
                 onClick={(event) => {
                   setCurrentElement(event.target)
-                  setHandleId(answer.id)
+                  // setHandleId(answer.id)
                 }}
               >
                 {answer.linked ? '' : <Add />}
-              </Handle>
+              </Handle> */}
             </li>
           ))}
         </ul>
@@ -76,7 +104,7 @@ export default memo(({ data, id, xPos, yPos }) => {
         anchorEl={currentElement}
         onClose={() => {
           setCurrentElement(null)
-          setHandleId(null)
+          // setHandleId(null)
         }}
         anchorOrigin={{
           vertical: 'center',
@@ -136,6 +164,6 @@ export default memo(({ data, id, xPos, yPos }) => {
           </button>
         </div>
       </Popover>
-    </>
+    </div>
   )
 })

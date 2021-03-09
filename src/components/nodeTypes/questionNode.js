@@ -8,7 +8,7 @@ export default memo(({ data }) => {
   const open = Boolean(currentElement)
   console.log('current element => ', currentElement)
   return (
-    <>
+    <div className='wrapper'>
       <Handle
         type='target'
         position='top'
@@ -83,6 +83,6 @@ export default memo(({ data }) => {
           </button>
         </div>
       </Popover>
-    </>
+    </div>
   )
 })
