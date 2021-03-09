@@ -22,7 +22,6 @@ export default memo(({ data, id, xPos, yPos, type }) => {
   }
 
   const handleClickCard = () => {
-    console.log('click question')
     const payload = {
       id,
       data: {
@@ -37,7 +36,7 @@ export default memo(({ data, id, xPos, yPos, type }) => {
         y: yPos,
       },
     }
-    console.log('payload => ', payload)
+
     dispatch({
       type: 'EDIT_QUESTION',
       payload,
