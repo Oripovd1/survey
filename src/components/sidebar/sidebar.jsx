@@ -1,18 +1,19 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
 import Content from './content'
 import './sidebar.css'
-const sidebar =  (props) => {
+const Sidebar = (props) => {
+  const [collapsed, setCollapsed] = useState (true)
 
     return (
         <div className="sidebar" style={{
-            maxWidth: props.collapsed ? 0 : 'var(--sidebar-width)'
+            maxWidth: collapsed ? 0 : 'var(--sidebar-width)'
           }}>
             <div className="sidebar-content-wrapper" >
               <Content />
             </div>
-            <button className="sidebar-btn" onClick={() => { props.setCollapsed(prev => !prev) }}>{props.collapsed ? '>' : '<'}</button>
+            <button className="sidebar-btn" onClick={() => { setCollapsed(prev => !prev) }}>{ collapsed ? '>' : '<'}</button>
         </div>
     );
 };
 
-export default sidebar;
+export default Sidebar;
