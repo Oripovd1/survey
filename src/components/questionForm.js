@@ -2,7 +2,6 @@ import React from 'react'
 import { Drawer, Form, Row, Col, Input, Button } from 'antd'
 
 export default function QuestionForm({ handleClose, open, node }) {
-  console.log('data => ', node)
   return (
     <Drawer
       title={node?.type}
@@ -23,7 +22,10 @@ export default function QuestionForm({ handleClose, open, node }) {
               rules={[{ required: true, message: 'Please enter number' }]}
               style={{ marginBottom: '12px' }}
             >
-              <Input value={`Q${node?.data?.id}`} placeholder={`Q${node?.data?.id}`} />
+              <Input
+                value={`Q${node?.data?.id}`}
+                placeholder={`Q${node?.data?.id}`}
+              />
             </Form.Item>
             <Form.Item
               key={16}
@@ -34,7 +36,10 @@ export default function QuestionForm({ handleClose, open, node }) {
               ]}
               style={{ marginBottom: '12px' }}
             >
-              <Input value={node?.data?.title} placeholder={node?.data?.title} />
+              <Input
+                value={node?.data?.title}
+                placeholder={node?.data?.title}
+              />
             </Form.Item>
           </Col>
           <Col span={24}>

@@ -3,6 +3,7 @@ import nodeReducer from './nodeReducer'
 import questionReducer from './questionReducer'
 import actionReducer from './actionReducer'
 import relationReducer from './relationReducer'
+import drawerReducer from './drawerReducer'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   questions: persistReducer(questionPersistConfig, questionReducer),
   actions: persistReducer(actionPersistConfig, actionReducer),
   relations: persistReducer(relationPersistConfig, relationReducer),
+  drawer: drawerReducer,
 })
 
 export default persistReducer(rootPersistConfig, rootReducer)

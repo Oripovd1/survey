@@ -9,25 +9,23 @@ import { Provider } from 'react-redux'
 import { store } from './store'
 
 // Components list
-import Navbar from "./components/navbar/navbar";
-import NodeFlow from './components/nodeFlow'
-import Sidebar from './components/sidebar/sidebar'
-import RightBar from './layouts/rightbar'
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import Home from './containers/home'
+import Example from './containers/example'
 
 function App() {
-
   const persistor = persistStore(store)
 
   return (
     <div>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <div className='App'>
-            <Navbar />
-            <Sidebar />
-            <NodeFlow />
-            <RightBar />
-          </div>
+          <Router>
+            <Switch>
+              <Route path='/' component={Home} exact />
+              <Route path='/example' component={Example} />
+            </Switch>
+          </Router>
         </PersistGate>
       </Provider>
     </div>

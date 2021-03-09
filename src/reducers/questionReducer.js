@@ -23,9 +23,7 @@ const questionReducer = (state = initialQuestionState, action) => {
       return {
         ...state,
         questions: state.questions.map((question) =>
-          question.id === payload.id
-            ? { ...question, quantity: question.quantity - 1 }
-            : question
+          question.id === payload.id ? payload : question
         ),
       }
     case questionActionTypes.CLEAR_QUESTION:

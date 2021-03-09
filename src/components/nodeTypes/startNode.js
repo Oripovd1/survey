@@ -4,44 +4,18 @@ import { PlayArrowRounded } from '@material-ui/icons'
 import { Popover } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 
-export default memo(({ id, type }) => {
+export default memo(({ id, xPos, yPos }) => {
   const [currentElement, setCurrentElement] = useState(null)
   const open = Boolean(currentElement)
   const dispatch = useDispatch()
 
-  const createQuestion = (event) => {
-    console.log(event.target)
+  const createQuestion = () => {
     dispatch({
-      type: 'ADD_QUESTION',
-      payload: {
-        id: 123,
-        data: {
-          number: 'Q1',
-          label: 'Who you are?',
-          answers: [
-            {
-              id: 1234,
-              label: 'Man',
-              value: 'Man',
-              order: 1,
-            },
-          ],
-        },
-        type: 'text',
-        position: {
-          x: 50,
-          y: 150,
-        },
-      },
+      type: 'OPEN_DRAWER',
+      payload: { id, x: xPos, y: yPos },
     })
-    dispatch({
-      type: 'ADD_RELATION',
-      payload: {
-        id: 32,
-        source: id,
-        target: 123,
-      },
-    })
+
+    setCurrentElement(null)
   }
 
   return (
