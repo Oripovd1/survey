@@ -37,13 +37,13 @@ const NodeFlow = () => {
   const nodeEdges = useSelector((state) => state.relations.relations)
   const state = useSelector((state) => state)
   console.log('state => ', state)
-  console.log('elements => ', elements)
+  // console.log('elements => ', elements)
 
   const onElementClick = (event, element) => {
     if (element.type === 'question' || element.type === 'condition') {
       console.log('selected element => ', element)
     }
-    console.log('click', element)
+    // console.log('click', element)
   }
 
   const onNodeDragStop = (event, node) => {
@@ -80,6 +80,7 @@ const NodeFlow = () => {
     [reactflowInstance]
   )
   console.log('reactflowInstance => ', reactflowInstance)
+
   return (
     <div>
       <ReactFlow

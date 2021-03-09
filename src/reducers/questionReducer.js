@@ -1,7 +1,7 @@
 import { questionActionTypes } from '../actions/questionActions/questionActionTypes'
 
 const initialQuestionState = {
-  questions: [],
+  questions: []
 }
 
 const questionReducer = (state = initialQuestionState, action) => {

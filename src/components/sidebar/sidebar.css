@@ -9,7 +9,7 @@
     border-top-right-radius: 22px;
     border-bottom-right-radius: 22px;
     position: absolute;
-    top: calc(50% - 10px);
+    top: calc(50% - 20px);
     right: -20px;
     z-index: 99;
     cursor: pointer;
