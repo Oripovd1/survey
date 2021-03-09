@@ -4,13 +4,13 @@ import ReactFlow, {
   addEdge,
   Controls,
 } from 'react-flow-renderer'
-import QuestionForm from './questionForm'
 import {
   QuestionNode,
   StartNode,
   FinishNode,
   ConditionNode,
   TextQuestion,
+  RadioQuestion,
 } from './nodeTypes'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -22,13 +22,12 @@ const nodeTypes = {
   finish: FinishNode,
   condition: ConditionNode,
   text: TextQuestion,
+  radio: RadioQuestion,
 }
 
 const NodeFlow = () => {
   const [reactflowInstance, setReactflowInstance] = useState(null)
   const [elements, setElements] = useState([])
-  const [visibleQuestion, setVisibleQuestion] = useState(false)
-  const [currentNode, setCurrentNode] = useState({})
 
   const dispatch = useDispatch()
 
@@ -36,6 +35,7 @@ const NodeFlow = () => {
   const nodeQuestions = useSelector((state) => state.questions.questions)
   const nodeEdges = useSelector((state) => state.relations.relations)
   const state = useSelector((state) => state)
+
   console.log('state => ', state)
   console.log('elements => ', elements)
 
@@ -53,16 +53,19 @@ const NodeFlow = () => {
   useEffect(() => {
     setElements([...nodeActions, ...nodeQuestions, ...nodeEdges])
   }, [nodeActions, nodeQuestions, nodeEdges])
+
   useEffect(() => {
     if (reactflowInstance && elements.length > 0) {
       reactflowInstance.fitView()
     }
   }, [reactflowInstance, elements.length])
+
   const onElementsRemove = useCallback(
     (elementsToRemove) =>
       setElements((els) => removeElements(elementsToRemove, els)),
     []
   )
+
   const onConnect = useCallback(
     (params) =>
       setElements((els) =>
@@ -70,6 +73,7 @@ const NodeFlow = () => {
       ),
     []
   )
+
   const onLoad = useCallback(
     (rfi) => {
       if (!reactflowInstance) {
@@ -79,7 +83,9 @@ const NodeFlow = () => {
     },
     [reactflowInstance]
   )
+
   console.log('reactflowInstance => ', reactflowInstance)
+
   return (
     <div>
       <ReactFlow
@@ -99,28 +105,7 @@ const NodeFlow = () => {
         defaultZoom={2}
       >
         <Controls />
-        {/* <MiniMap
-          nodeColor={(node) => {
-            switch (node.type) {
-              case 'finish':
-                return '#f5644a'
-              case 'start':
-                return '#00c853'
-              case 'question':
-                return 'rgb(7, 145, 229)'
-              default:
-                return '#eee'
-            }
-          }}
-          nodeStrokeWidth={3}
-          nodeBorderRadius={6}
-        /> */}
       </ReactFlow>
-      <QuestionForm
-        handleClose={() => setVisibleQuestion(false)}
-        open={visibleQuestion}
-        node={currentNode}
-      />
     </div>
   )
 }

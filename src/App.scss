@@ -30,7 +30,8 @@ body {
 }
 
 .react-flow__node-question,
-.react-flow__node-text {
+.react-flow__node-text,
+.react-flow__node-radio {
   display: block;
   min-width: 300px;
   max-width: 600px;

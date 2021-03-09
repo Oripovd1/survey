@@ -1,23 +1,38 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Add } from '@material-ui/icons'
 
-export default function TextForm({ source, currentElement }) {
+export default function RadioForm({ source, currentElement }) {
   const dispatch = useDispatch()
-  const { handleSubmit, register, reset } = useForm()
+  const [answer, setAnswer] = useState('')
+  const [values, setValues] = useState({
+    title: '',
+    desc: '',
+    answers: [],
+  })
+
+  useEffect(() => {
+    if (currentElement) {
+      setValues({
+        title: currentElement?.data.label,
+        desc: currentElement?.data.description,
+        answers: currentElement?.data.answers,
+      })
+    }
+  }, [currentElement])
 
   const questions = useSelector((state) => state.questions.questions)
   const relations = useSelector((state) => state.relations.relations)
   const actions = useSelector((state) => state.actions.actions)
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     if (currentElement) {
       const payload = {
         id: currentElement.id,
         data: {
           number: currentElement.data.number,
-          label: data.title,
-          description: data.desc,
+          label: values.title,
+          description: values.desc,
           answers: currentElement.data.answers,
         },
         type: currentElement.type,
@@ -39,17 +54,11 @@ export default function TextForm({ source, currentElement }) {
           id: questionId.toString(),
           data: {
             number: `Q${questionNumber}`,
-            label: data.title,
-            description: data.desc,
-            answers: [
-              {
-                id: '',
-                label: '',
-                value: '',
-              },
-            ],
+            label: values.title,
+            description: values.desc,
+            answers: values.answers,
           },
-          type: 'text',
+          type: 'radio',
           position: {
             x: source.x + 200,
             y: source.y + 200,
@@ -68,11 +77,23 @@ export default function TextForm({ source, currentElement }) {
     }
 
     dispatch({ type: 'CLOSE_DRAWER' })
-    reset()
   }
+
+  const addAnswer = () => {
+    const id = values.answers.length + 1
+
+    if (answer !== '') {
+      setValues({
+        ...values,
+        answers: [...values.answers, { label: answer, id: id.toString() }],
+      })
+      setAnswer('')
+    }
+  }
+
   return (
-    <form className='content_wrapper' onSubmit={handleSubmit(onSubmit)}>
-      <div className='form'>
+    <div className='content_wrapper'>
+      <form className='form'>
         <div className='form_group'>
           <h1>Вопрос</h1>
           <div className='input_group'>
@@ -81,8 +102,8 @@ export default function TextForm({ source, currentElement }) {
               id='title'
               name='title'
               type='text'
-              defaultValue={currentElement?.data.label}
-              ref={register}
+              value={values.title}
+              onChange={(e) => setValues({ ...values, title: e.target.value })}
               placeholder='Напишите заголовок вопроса'
             />
           </div>
@@ -92,40 +113,55 @@ export default function TextForm({ source, currentElement }) {
               id='desc'
               name='desc'
               type='text'
-              ref={register}
+              value={values.desc}
+              onChange={(e) => setValues({ ...values, desc: e.target.value })}
               placeholder='Напишите дополнительное описание'
             />
           </div>
         </div>
-        {/* <div className='form_group'>
-            <h1>Ответы</h1>
-            <div className='input_group'>
-              <label htmlFor='answer'>Текстовый ответ</label>
-              <input
-                id='answer'
-                name='answer'
-                type='text'
-                ref={register}
-                placeholder='Введите свой ответ'
-              />
-            </div>
-          </div> */}
-      </div>
+        <div className='form_group'>
+          <h1>Ответы</h1>
+          <label htmlFor='answer'>Единственний выбор</label>
+          {values.answers.length > 0 &&
+            values.answers.map((item, index) => (
+              <div key={index} className='input_group'>
+                <input type='text' value={item.label} disabled />
+              </div>
+            ))}
+          <div className='input_group'>
+            <input
+              id='answer'
+              name='answer'
+              type='text'
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  addAnswer()
+                }
+              }}
+              placeholder='Напишите ответ'
+            />
+          </div>
+          <button className='btn btn-icon' type='button' onClick={addAnswer}>
+            <Add /> Добавить вопрос
+          </button>
+        </div>
+      </form>
       <div className='actions'>
         <button
           className='btn secondary'
-          type='button'
           onClick={() => {
             dispatch({ type: 'CLOSE_DRAWER' })
-            reset()
+            setValues({})
           }}
         >
           Отменить
         </button>
-        <button className='btn primary' type='submit'>
+        <button className='btn primary' onClick={onSubmit}>
           Сохранить
         </button>
       </div>
-    </form>
+    </div>
   )
 }
