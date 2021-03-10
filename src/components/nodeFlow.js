@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import ReactFlow, {
-  removeElements,
-  addEdge,
-  Controls,
-} from 'react-flow-renderer'
+import ReactFlow, { addEdge, Controls } from 'react-flow-renderer'
 import {
   QuestionNode,
   StartNode,
@@ -12,6 +8,7 @@ import {
   TextQuestion,
   RadioQuestion,
   CheckboxQuestion,
+  NumberQuestion,
 } from './nodeTypes'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -25,6 +22,7 @@ const nodeTypes = {
   text: TextQuestion,
   radio: RadioQuestion,
   checkbox: CheckboxQuestion,
+  number: NumberQuestion,
 }
 
 const NodeFlow = () => {
@@ -64,7 +62,11 @@ const NodeFlow = () => {
 
   const onElementsRemove = useCallback(
     (elementsToRemove) =>
-      setElements((els) => removeElements(elementsToRemove, els)),
+      elementsToRemove.forEach((element) => {
+        dispatch({ type: 'REMOVE_RELATION', payload: element })
+        dispatch({ type: 'REMOVE_QUESTION', payload: element })
+        dispatch({ type: 'CLOSE_DRAWER' })
+      }),
     []
   )
 

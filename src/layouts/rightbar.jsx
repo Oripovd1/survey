@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import TextForm from '../components/forms/textForm'
 import RadioForm from '../components/forms/radioForm'
 import CheckboxForm from '../components/forms/checkboxForm'
+import NumberForm from '../components/forms/numberForm'
 
 // main layout manager
 const Rightbar = () => {
@@ -38,6 +39,9 @@ const Rightbar = () => {
       )}
       {(source?.type || currentElement?.type) === 'checkbox' && (
         <CheckboxForm source={source} currentElement={currentElement} />
+      )}
+      {(source?.type || currentElement?.type) === 'number' && (
+        <NumberForm source={source} currentElement={currentElement} />
       )}
     </div>
   )

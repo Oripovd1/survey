@@ -96,6 +96,8 @@ export default function RadioForm({ source, currentElement }) {
     setValues({ ...values, answers: filteredAnswers })
   }
 
+  console.log('values => ', values)
+
   return (
     <div className='content_wrapper'>
       <button

@@ -3,7 +3,7 @@ import { Close } from '@material-ui/icons'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 
-export default function TextForm({ source, currentElement }) {
+export default function NumberForm({ source, currentElement }) {
   const dispatch = useDispatch()
   const { handleSubmit, register, reset } = useForm()
 
@@ -19,7 +19,12 @@ export default function TextForm({ source, currentElement }) {
           number: currentElement.data.number,
           label: data.title,
           description: data.desc,
-          answers: currentElement.data.answers,
+          answers: [
+            {
+              id: '1',
+              label: data.answer,
+            },
+          ],
         },
         type: currentElement.type,
         position: currentElement.position,
@@ -44,13 +49,12 @@ export default function TextForm({ source, currentElement }) {
             description: data.desc,
             answers: [
               {
-                id: '',
-                label: '',
-                value: '',
+                id: '1',
+                label: data.answer,
               },
             ],
           },
-          type: 'text',
+          type: 'number',
           position: {
             x: source.x + 200,
             y: source.y + 200,
@@ -109,19 +113,20 @@ export default function TextForm({ source, currentElement }) {
             />
           </div>
         </div>
-        {/* <div className='form_group'>
-            <h1>Ответы</h1>
-            <div className='input_group'>
-              <label htmlFor='answer'>Текстовый ответ</label>
-              <input
-                id='answer'
-                name='answer'
-                type='text'
-                ref={register}
-                placeholder='Введите свой ответ'
-              />
-            </div>
-          </div> */}
+        <div className='form_group'>
+          <h1>Ответы</h1>
+          <div className='input_group'>
+            <label htmlFor='answer'>Числовой ответ</label>
+            <input
+              id='answer'
+              name='answer'
+              type='number'
+              defaultValue={currentElement?.data.answers[0].label}
+              ref={register}
+              placeholder='Введите цифру'
+            />
+          </div>
+        </div>
       </div>
       <div className='actions'>
         <button

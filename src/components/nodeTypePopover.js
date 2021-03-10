@@ -13,7 +13,6 @@ export default function NodeTypePopover({
       anchorEl={currentElement}
       onClose={() => {
         setCurrentElement(null)
-        // setHandleId(null)
       }}
       anchorOrigin={{
         vertical: 'center',
@@ -44,7 +43,7 @@ export default function NodeTypePopover({
             <p>Выбрать текстовой ответ</p>
           </div>
         </button>
-        <button>
+        <button onClick={(event) => createQuestion(event, 'number')}>
           <div className='imgWrapper'>
             <img src='number.svg' alt='Number type' />
           </div>
