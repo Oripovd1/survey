@@ -4,6 +4,7 @@ import FinishNode from './finishNode'
 import ConditionNode from './conditionNode'
 import TextQuestion from './textQuestion'
 import RadioQuestion from './radioQuestion'
+import CheckboxQuestion from './checkboxQuestion'
 
 export {
   QuestionNode,
@@ -12,4 +13,5 @@ export {
   ConditionNode,
   TextQuestion,
   RadioQuestion,
+  CheckboxQuestion,
 }

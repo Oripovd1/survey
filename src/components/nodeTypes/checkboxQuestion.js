@@ -8,14 +8,14 @@ export default memo(({ data, id, xPos, yPos, type }) => {
   const [currentElement, setCurrentElement] = useState(null)
   const open = Boolean(currentElement)
 
-  // const [handleId, setHandleId] = useState(null)
+  const [handleId, setHandleId] = useState(null)
   const dispatch = useDispatch()
 
-  const createQuestion = (event, questionType) => {
+  const createQuestion = (event, type) => {
     event.stopPropagation()
     dispatch({
       type: 'OPEN_DRAWER',
-      payload: { id, x: xPos, y: yPos, type: questionType },
+      payload: { id, x: xPos, y: yPos, type, handleId },
     })
 
     setCurrentElement(null)
@@ -79,21 +79,23 @@ export default memo(({ data, id, xPos, yPos, type }) => {
         </h3>
         <p className='desc'>{data.description}</p>
         <ul className='answer_list'>
-          {data.answers.map((answer, index) => (
+          {data.answers.map((answer) => (
             <li key={answer.id}>
               {answer.label}
-              {/* <Handle
+              <span className='shape rectangle' />
+              <Handle
                 type='source'
                 position='right'
                 id={answer.id}
                 className={answer.linked ? 'linked' : ''}
                 onClick={(event) => {
+                  event.stopPropagation()
                   setCurrentElement(event.target)
-                  // setHandleId(answer.id)
+                  setHandleId(answer.id)
                 }}
               >
                 {answer.linked ? '' : <Add />}
-              </Handle> */}
+              </Handle>
             </li>
           ))}
         </ul>

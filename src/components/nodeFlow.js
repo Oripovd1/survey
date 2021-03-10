@@ -11,6 +11,7 @@ import {
   ConditionNode,
   TextQuestion,
   RadioQuestion,
+  CheckboxQuestion,
 } from './nodeTypes'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -23,6 +24,7 @@ const nodeTypes = {
   condition: ConditionNode,
   text: TextQuestion,
   radio: RadioQuestion,
+  checkbox: CheckboxQuestion,
 }
 
 const NodeFlow = () => {

@@ -62,7 +62,7 @@ export default function NodeTypePopover({
             <p>Выбрать одиночный ответ</p>
           </div>
         </button>
-        <button>
+        <button onClick={(event) => createQuestion(event, 'checkbox')}>
           <div className='imgWrapper'>
             <img src='checkbox.svg' alt='Checkbox type' />
           </div>

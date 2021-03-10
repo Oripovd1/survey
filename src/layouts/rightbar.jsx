@@ -3,6 +3,7 @@ import './rightbar.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import TextForm from '../components/forms/textForm'
 import RadioForm from '../components/forms/radioForm'
+import CheckboxForm from '../components/forms/checkboxForm'
 
 // main layout manager
 const Rightbar = () => {
@@ -34,6 +35,9 @@ const Rightbar = () => {
       )}
       {(source?.type || currentElement?.type) === 'radio' && (
         <RadioForm source={source} currentElement={currentElement} />
+      )}
+      {(source?.type || currentElement?.type) === 'checkbox' && (
+        <CheckboxForm source={source} currentElement={currentElement} />
       )}
     </div>
   )

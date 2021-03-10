@@ -31,7 +31,9 @@ body {
 
 .react-flow__node-question,
 .react-flow__node-text,
-.react-flow__node-radio {
+.react-flow__node-radio,
+.react-flow__node-checkbox,
+.react-flow__node-number {
   display: block;
   min-width: 300px;
   max-width: 600px;
@@ -125,6 +127,23 @@ body {
       background-color: #fff;
       font-size: 17px;
       line-height: 22px;
+      .shape {
+        position: absolute;
+        top: 50%;
+        right: 32px;
+        z-index: 10;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba($color: #000000, $alpha: 0.6);
+        background-color: #fff;
+        transform: translateY(-50%);
+        &.circle {
+          border-radius: 50%;
+        }
+        &.rectangle {
+          border-radius: 0;
+        }
+      }
     }
   }
 }

@@ -11,11 +11,11 @@ export default memo(({ data, id, xPos, yPos, type }) => {
   const [handleId, setHandleId] = useState(null)
   const dispatch = useDispatch()
 
-  const createQuestion = (event, type) => {
+  const createQuestion = (event, questionType) => {
     event.stopPropagation()
     dispatch({
       type: 'OPEN_DRAWER',
-      payload: { id, x: xPos, y: yPos, type, handleId },
+      payload: { id, x: xPos, y: yPos, type: questionType, handleId },
     })
 
     setCurrentElement(null)
@@ -82,6 +82,7 @@ export default memo(({ data, id, xPos, yPos, type }) => {
           {data.answers.map((answer) => (
             <li key={answer.id}>
               {answer.label}
+              <span className='shape circle' />
               <Handle
                 type='source'
                 position='right'
