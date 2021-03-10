@@ -1,4 +1,5 @@
 import React from 'react'
+import { Close } from '@material-ui/icons'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -72,6 +73,16 @@ export default function TextForm({ source, currentElement }) {
   }
   return (
     <form className='content_wrapper' onSubmit={handleSubmit(onSubmit)}>
+      <button
+        className='btn close'
+        type='button'
+        onClick={() => {
+          dispatch({ type: 'CLOSE_DRAWER' })
+          reset()
+        }}
+      >
+        <Close />
+      </button>
       <div className='form'>
         <div className='form_group'>
           <h1>Вопрос</h1>

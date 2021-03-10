@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Add } from '@material-ui/icons'
+import { Add, Close, DeleteOutline, DragIndicator } from '@material-ui/icons'
 
 export default function RadioForm({ source, currentElement }) {
   const dispatch = useDispatch()
@@ -33,7 +33,7 @@ export default function RadioForm({ source, currentElement }) {
           number: currentElement.data.number,
           label: values.title,
           description: values.desc,
-          answers: currentElement.data.answers,
+          answers: values.answers,
         },
         type: currentElement.type,
         position: currentElement.position,
@@ -91,8 +91,22 @@ export default function RadioForm({ source, currentElement }) {
     }
   }
 
+  const deleteAnswer = (id) => {
+    const filteredAnswers = values.answers.filter((answer) => answer.id !== id)
+    setValues({ ...values, answers: filteredAnswers })
+  }
+
   return (
     <div className='content_wrapper'>
+      <button
+        className='btn close'
+        onClick={() => {
+          dispatch({ type: 'CLOSE_DRAWER' })
+          setValues({})
+        }}
+      >
+        <Close />
+      </button>
       <form className='form'>
         <div className='form_group'>
           <h1>Вопрос</h1>
@@ -124,8 +138,18 @@ export default function RadioForm({ source, currentElement }) {
           <label htmlFor='answer'>Единственний выбор</label>
           {values.answers.length > 0 &&
             values.answers.map((item, index) => (
-              <div key={index} className='input_group'>
-                <input type='text' value={item.label} disabled />
+              <div key={index} className='input_group row'>
+                <button className='btn drag_drop' type='button'>
+                  <DragIndicator />
+                </button>
+                <div className='input'>{item.label}</div>
+                <button
+                  className='btn delete'
+                  type='button'
+                  onClick={() => deleteAnswer(item.id)}
+                >
+                  <DeleteOutline />
+                </button>
               </div>
             ))}
           <div className='input_group'>
